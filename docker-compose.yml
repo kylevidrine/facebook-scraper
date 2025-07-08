@@ -3,7 +3,7 @@ version: "3.8"
 services:
   facebook-scraper:
     build: .
-    container_name: facebook-event-scraper
+    container_name: facebook-scraper
     restart: unless-stopped
     environment:
       - PYTHONUNBUFFERED=1

@@ -48,32 +48,29 @@ fi
 
 # Rebuild and restart Docker container
 echo "🐳 Rebuilding Docker container..."
-docker-compose down
+sudo docker-compose down
 
 echo "🔨 Building new image with latest changes..."
-docker-compose up -d --build
+sudo docker-compose up -d --build
 
 # Wait a moment for container to start
 sleep 3
 
 # Check if container is running
-if docker ps | grep -q facebook-event-scraper; then
+if sudo docker ps | grep -q facebook-scraper; then
     echo "✅ Container is running successfully"
-    
-    # Optional: Test the scraper
     echo "🧪 Testing scraper (optional)..."
-    echo "Run this command to test: docker exec -it facebook-event-scraper python scraper.py"
+    echo "Run this command to test: sudo docker exec -it facebook-scraper python scraper.py"
 else
     echo "❌ Container failed to start"
-    echo "Check logs with: docker-compose logs facebook-event-scraper"
-    exit 1
+    echo "Check logs with: sudo docker-compose logs facebook-scraper"
 fi
 
 echo "🎉 Deployment complete!"
 echo ""
 echo "📋 Next steps:"
-echo "   • Test scraper: docker exec -it facebook-event-scraper python scraper.py"
-echo "   • Check logs: docker-compose logs -f facebook-event-scraper"
+echo "   • Test scraper: sudo docker exec -it facebook-scraper python scraper.py"
+echo "   • Check logs: sudo docker-compose logs -f facebook-scraper"
 echo "   • Edit config: nano .env"
 echo ""
 echo "📊 Monitor your events at your N8N webhook endpoint"
