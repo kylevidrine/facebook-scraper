@@ -1,0 +1,25 @@
+version: "3.8"
+
+services:
+  facebook-scraper:
+    build: .
+    container_name: facebook-event-scraper
+    restart: unless-stopped
+    environment:
+      - PYTHONUNBUFFERED=1
+      - TESSERACT_CMD=/usr/bin/tesseract
+      - OMP_THREAD_LIMIT=1
+      # Load all environment variables from .env file
+      - N8N_WEBHOOK_URL=${N8N_WEBHOOK_URL}
+      - SCRAPE_INTERVAL=${SCRAPE_INTERVAL:-21600}
+      - FACEBOOK_ARTISTS_CONFIG=${FACEBOOK_ARTISTS_CONFIG}
+      - FACEBOOK_VENUES_CONFIG=${FACEBOOK_VENUES_CONFIG}
+    volumes:
+      - ./logs:/app/logs
+      - ./data:/app/data
+    # Uncomment to run on a schedule (every 6 hours by default)
+    # command: |
+    #   sh -c "while true; do
+    #     python scraper.py
+    #     sleep ${SCRAPE_INTERVAL:-21600}
+    #   done"

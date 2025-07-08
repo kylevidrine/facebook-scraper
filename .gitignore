@@ -1,0 +1,67 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+
+# Docker
+.dockerignore
+
+# Logs
+logs/
+*.log
+
+# Data files
+data/
+*.json
+*.csv
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Environment variables - NEVER commit these!
+.env
+.env.local
+.env.production
+.env.staging
+.env.development
+
+# Sensitive configuration files
+config.py
+secrets.py
+private_config.json
+
+# Docker compose override files with sensitive data
+docker-compose.override.yml
+docker-compose.local.yml
+
+# Deployment scripts with server-specific paths
+deploy.local.sh
+deploy.production.sh
+
+# Temporary files
+tmp/
+temp/
+
+# Testing and coverage
+.coverage
+.pytest_cache/
+htmlcov/
+
+# Build artifacts
+dist/
+build/
+*.egg-info/
